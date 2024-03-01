@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head') %>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        body{
+            color: white !important;
+            font-size: 18px;
+        }
+
+    </style>
+</head>
+<body>
+
+        <div class="container-fluid">
+             <%- include('../partials/nav') %>
+              <div class="row">
+                 <div class="col">
+                     <main style="min-height: 100vh; background-color: #201658">
+                         <h1 class="text-center m-3"><%= title %></h1>
+                         <hr/>
+                         <div class="row d-flex justify-content-evenly">
+                           <% data.map((item)=>{  %>
+                                 <div class="col-md-5 m-2">
+                                      <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="text-danger"><%= item.name %></h4>
+                                            <p><%= item.qul %></p>
+                                            <p><%= item.course %></p>
+                                            <p><%= item.phone %></p>
+                                            <div>
+                                                <button>edit</button>
+                                                <button>del</button>
+                                            </div>
+                                        </div>
+                                      </div>
+                                 </div>
+                          <% }) %>
+
+                         </div>
+                    </main>
+                 </div>
+            </div>
+           
+            <%- include('../partials/footer') %>
+        </div>
+</body>
+</html>
