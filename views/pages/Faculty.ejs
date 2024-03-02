@@ -29,12 +29,14 @@
                                       <div class="card">
                                         <div class="card-body">
                                             <h4 class="text-danger"><%= item.name %></h4>
-                                            <p><%= item.qul %></p>
-                                            <p><%= item.course %></p>
-                                            <p><%= item.phone %></p>
+                                            <p class="text-danger"><%= item.qul %></p>
+                                            <p class="text-danger"><%= item.course %></p>
+                                            <p class="text-danger"><%= item.phone %></p>
                                             <div>
-                                                <button>edit</button>
-                                                <button>del</button>
+                                                <button class="btn btn-info"onclick="editHandler(<%= item.id%>)">edit</button>
+                                                <button class="btn btn-danger"onclick="deleteHandler(<%= item.id%>)">del</button>
+                                               
+                                                
                                             </div>
                                         </div>
                                       </div>
@@ -48,5 +50,29 @@
            
             <%- include('../partials/footer') %>
         </div>
+        <script>
+            function editHandler(id)
+            {
+                 location.href=`/admin?${id}`
+            }
+            async function deleteHandler(id)
+            {
+                 try{
+                     let data=await  fetch(`/faculty/${id}`,{method:"DELETE"})
+                      let res= await data.json()
+                      if(res.ok)
+                      {
+                        alert('successful delete')
+                        window.location.reload()
+
+                      }
+                 }
+                 catch(err)
+                 {
+                    console.log(err)
+                    alert(err.message)
+                 }
+            }
+        </script>
 </body>
 </html>
