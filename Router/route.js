@@ -1,5 +1,5 @@
 let express=require('express')
-const { indexHandler, adminHandler, adminDataHandler, facultyHandler, facultyDeleteHandler, editFacultyHandlerData, adminDataEditHandler } = require('../controller/facultyController')
+const { indexHandler, adminHandler, adminDataHandler, facultyHandler, facultyDeleteHandler, editFacultyHandlerData, adminDataEditHandler, searchHandler, serchResultHandler } = require('../controller/facultyController')
 let route=express.Router()
 route.get('/',indexHandler)
 route.get('/admin',adminHandler)
@@ -8,4 +8,6 @@ route.put('/admin/:id',adminDataEditHandler)
 route.get('/faculty',facultyHandler)
 route.delete('/faculty/:id',facultyDeleteHandler)
 route.get(`/edit/:id`,editFacultyHandlerData)
+route.get('/search',searchHandler)
+route.post('/search',serchResultHandler)
 module.exports=route
